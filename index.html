@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Add some basic styling to the slider container */
+      .slider {
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+      .slide-container {
+        display: flex;
+        flex-direction: row;
+        transition: 2s ease ease-in-out;
+        justify-content: center;
+        gap: 25vw;
+      }
+      .mySlides {
+        width: 400px;
+        height: 300px;
+      }
+
+      .button-container {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+      }
+      .nav-button {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider">
+      <div class="slide-container">
+        <!-- <div class="mySlides"></div> -->
+        <img
+          class="mySlides"
+          src="https://img.freepik.com/free-photo/luxury-sports-car-back-half-side-view_90220-308.jpg"
+        />
+
+        <img
+          class="mySlides"
+          src="https://t3.ftcdn.net/jpg/01/71/13/04/360_F_171130424_f8KQj028hrnzzU8aa9aMNgrNRT9JU3Wz.jpg"
+        />
+        <img
+          class="mySlides"
+          src="https://media.istockphoto.com/id/952108732/photo/3d-illustration-of-generic-compact-red-car-side-view.jpg?s=612x612&w=0&k=20&c=hlg4jpJy2UxOC1lgAYx6Vi18dDy5BTWoJDmaA8TRiVY="
+        />
+        <img
+          class="mySlides"
+          src="https://media.istockphoto.com/id/946459708/photo/3d-illustration-of-generic-red-sedan-car-on-white.webp?b=1&s=170667a&w=0&k=20&c=HBLWPFx4jRKwkwkUy4ZH34OyeafkhtrxxfEQWerKmDE="
+        />
+        <img
+          class="mySlides"
+          src="https://img.freepik.com/free-photo/luxury-sports-car-back-half-side-view_90220-308.jpg"
+        />
+        <img
+          class="mySlides"
+          src="https://t3.ftcdn.net/jpg/01/71/13/04/360_F_171130424_f8KQj028hrnzzU8aa9aMNgrNRT9JU3Wz.jpg"
+        />
+        <!-- <div class="mySlides"></div> -->
+      </div>
+
+      <div class="button-container">
+        <button class="nav-button" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="nav-button" onclick="plusDivs(+1)">&#10095;</button>
+      </div>
+    </div>
+
+    <script>
+      var slideIndex = 2;
+      showDivs(slideIndex);
+
+      function plusDivs(n) {
+        showDivs((slideIndex += n));
+      }
+
+      function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+
+        // if clicked on the last index move to the first slide
+        if (n >= x.length - 1) {
+          slideIndex = 1;
+        }
+
+        // if clicked on the first index move to the last slide
+        if (n < 1) {
+          slideIndex = x.length - 2;
+          n = x.length - 2;
+        }
+
+        for (i = 0; i < x.length; i++) {
+          //   if (firstTime) {
+          //     x[i].style.transform = "translateX(400px)";
+          //   } else {
+          //     x[i].style.transform = "translateX(-400px)";
+          //   }
+          //   if (i == slideIndex) {
+          //     x[i].style.opacity = "1";
+          //   } else {
+          //     x[i].style.opacity = "0.3";
+          //   }
+          //   Displaying Next slide
+          if (i == slideIndex + 1) {
+            x[i].style.display = "block";
+            x[i].style.opacity = "0.3";
+
+            // Displaying Current slide
+          } else if (i == slideIndex) {
+            x[i].style.display = "block";
+            x[i].style.opacity = "1";
+
+            // Displaying Previous slide
+          } else if (i == slideIndex - 1) {
+            x[i].style.display = "block";
+            x[i].style.opacity = "0.3";
+
+            // Hiding all other slides
+          } else {
+            x[i].style.display = "none";
+            x[i].style.marginRight = "0";
+            x[i].style.marginLeft = "0";
+            x[i].style.opacity = "0.3";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
